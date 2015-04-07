@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>another.nianj</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <link rel="stylesheet" type="text/css" href="lib/normalize-css/normalize.css">
+        <style type="text/css">
+            .switch-test{
+                position: relative;
+                overflow: hidden;
+                display: inline-block;
+            }
+            .switch-test > .arraw{
+                position: absolute;
+                display: block;
+                top:50%;
+                width: 50px;
+                height:89px;
+                margin-top: -45px;
+                cursor: pointer;
+                background-image: url('assets/switch-arr.png');
+
+            }
+            .switch-test > .arr-next {
+                background-position: 50px 0;
+                right: 0;
+            }
+
+            .switch-test > .index-container{
+                position: absolute;
+                width:200px;
+                left:50%;
+                bottom: 3%;
+                margin-left: -100px;
+                text-align: center;
+
+            }
+
+            .switch-test > .index-container > .item-index{
+                display: inline-block;
+                font-size: 0;
+                width: 11px;
+                height: 11px;
+                padding: 5px;
+                background-image: url("http://simg1.qunarzz.com/hotel/kezhan/changepic_btn_c.png");
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        </style>
+        <script src="lib/jquery/dist/jquery.js"></script>
+        <script src="lib/jquery-ui/ui/core.js"></script>
+        <script src="lib/jquery-ui/ui/widget.js"></script>
+        <script src="src/jui-switchable.js"></script>
+        <script src="src/jui-staticswitch.js"></script>
+        <script type="text/javascript">
+        $(function(){
+            $('.switch-test').staticswitch({showDuration:5000,effectDuration:800});
+        });
+        </script>
+    </head>
+    <body>
+        <div class="switch-test">
+            <div class="items">
+                <a href="" class="item"><img src="assets/img-1.jpg" /></a>
+                <a href="" class="item"><img src="assets/img-2.jpg" /></a>
+                <a href="" class="item"><img src="assets/img-3.jpg" /></a>
+            </div>
+        </div>
+    </body>
+</html>
