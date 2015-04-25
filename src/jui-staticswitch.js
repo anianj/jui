@@ -49,7 +49,6 @@
             var me             = this,
                 indexContainer = $('<div class="index-container" />');
 
-
             me.items.each(function(idx,item){
                 var idxItem = $('<a class="item-index" data-index="'+ idx + '"/>').html(idx + 1);
                 indexContainer.append(idxItem);
@@ -57,35 +56,44 @@
 
             me.element.append(indexContainer);
 
-
         },
 
-        _switchIndexs: function(){
+        _switchIndexs: function(to,from){
+            var fromIndex = this.element.find('> .index-container > .item-index[data-index="' + from + '"]');
+            var toIndex   = this.element.find('> .index-container > .item-index[data-index="' + to + '"]');
 
+            fromIndex.removeClass('item-index-active');
+            toIndex.addClass('item-index-active');
         },
 
         _initEvent: function(){
-
             var me = this;
+            function resetInterval(){
+                me.pause();
+                me.start();
+            }
+
             //bind event handle for arrows
             this.element.on('click','.arr-prev',function(evt){
                 me.prev();
-                me.pause();
-                me.start();
+                resetInterval();
             });
             this.element.on('click','.arr-next',function(evt){
                 me.next();
-                me.pause();
-                me.start();
+                resetInterval();
             });
             //bind event handle for indexs
             this.element.on('click', '.item-index',function(evt){
                 me.switchTo($(this).attr('data-index'));
+                me.pause();
+                me.start();
             });
         },
 
 
         switchTo: function(idx){
+
+            idx = parseInt(idx);
 
             if(!this.items[idx])
                 throw new Error('Index out of range');
@@ -100,9 +108,15 @@
                     function(){
                         targetItem.element.fadeIn(me.options.effectDuration/2);
                 });
+
+                if(this.options.showIndex)
+                    this._switchIndexs(targetItem.idx,prevItem.idx);
             }
             else{
                 targetItem.element.fadeIn(this.options.effectDuration/2);
+
+                if(this.options.showIndex)
+                    this._switchIndexs(targetItem.idx,0);
             }
 
             this._state.current = targetItem;

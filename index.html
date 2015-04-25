@@ -50,6 +50,21 @@
                 background-position: center;
                 background-repeat: no-repeat;
             }
+            .switch-test > .index-container > .item-index-active{
+                background-image: url("http://simg1.qunarzz.com/hotel/kezhan/changepic_btn_a.png");
+            }
+
+            .slides-test{
+                width:600px;
+                height:340px;
+            }
+            .slides-test, .slides-test .items{
+                position: relative;
+                overflow: hidden;
+            }
+            .slides-test .items .item{
+                float:left;
+            }
         </style>
         <script src="lib/jquery/dist/jquery.js"></script>
         <script src="lib/jquery-ui/ui/core.js"></script>
@@ -63,7 +78,16 @@
         </script>
     </head>
     <body>
+        <h2>Switch</h2>
         <div class="switch-test">
+            <div class="items">
+                <a href="" class="item"><img src="assets/img-1.jpg" /></a>
+                <a href="" class="item"><img src="assets/img-2.jpg" /></a>
+                <a href="" class="item"><img src="assets/img-3.jpg" /></a>
+            </div>
+        </div>
+    <h2>Slides</h2>
+        <div class="slides-test">
             <div class="items">
                 <a href="" class="item"><img src="assets/img-1.jpg" /></a>
                 <a href="" class="item"><img src="assets/img-2.jpg" /></a>
